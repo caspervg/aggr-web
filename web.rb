@@ -12,8 +12,8 @@ end
 # Vocabularies
 ###
 
-MU_ACCOUNT = RDF::Vocabulary.new(MU.to_uri.to_s + 'account/')
-MU_SESSION = RDF::Vocabulary.new(MU.to_uri.to_s + 'session/')
+#MU_ACCOUNT = RDF::Vocabulary.new(MU.to_uri.to_s + 'account/')
+#MU_SESSION = RDF::Vocabulary.new(MU.to_uri.to_s + 'session/')
 
 ###
 # POST /aggregations/kmeans
@@ -56,7 +56,8 @@ post '/aggregations/kmeans/?' do
   # Build commandline based on request
   ###
 
-  cmdline = [build_general_command(attributes),
+  dataset_id = BSON::ObjectId.new.to_s
+  cmdline = [build_general_command(attributes, dataset_id),
              build_kmeans_command(attributes['parameters']),
              build_dynamic_parameters(attributes['dynamic'])].compact.join(' ')
 
@@ -82,7 +83,7 @@ post '/aggregations/kmeans/?' do
     },
     data: {
       type: 'kmeans_aggregation_result',
-      id: "identifier" #session_id
+      id: dataset_id
     }
   }.to_json
 end
@@ -120,7 +121,8 @@ post '/aggregations/time/?' do
   # Build commandline based on request
   ###
 
-  cmdline = [build_general_command(attributes),
+  dataset_id = BSON::ObjectId.new.to_s
+  cmdline = [build_general_command(attributes, dataset_id),
              build_time_command(attributes['parameters']),
              build_dynamic_parameters(attributes['dynamic'])].compact.join(' ')
 
@@ -146,7 +148,7 @@ post '/aggregations/time/?' do
       },
       data: {
           type: 'time_aggregation_result',
-          id: "identifier" #session_id
+          id: dataset_id
       }
   }.to_json
 end
@@ -185,7 +187,8 @@ post '/aggregations/grid/?' do
   # Build commandline based on request
   ###
 
-  cmdline = [build_general_command(attributes),
+  dataset_id = BSON::ObjectId.new.to_s
+  cmdline = [build_general_command(attributes, dataset_id),
              build_grid_command(attributes['parameters']),
              build_dynamic_parameters(attributes['dynamic'])].compact.join(' ')
 
@@ -211,7 +214,7 @@ post '/aggregations/grid/?' do
       },
       data: {
           type: 'time_aggregation_result',
-          id: "identifier" #session_id
+          id: dataset_id
       }
   }.to_json
 end

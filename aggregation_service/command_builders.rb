@@ -1,14 +1,14 @@
 module AggregationService
   module CommandBuilders
-    def build_general_command(data)
+    def build_general_command(data, dataset_id)
       input = data['input']
       output = data['output']
       service = _or_else(data['service'], ENV['MU_SPARQL_ENDPOINT'])
       big_data = _or_else(data['big_data'], false)
-      dataset = _or_else(data['dataset'], BSON::ObjectId.new.to_s)
+      dataset = _or_else(dataset_id, BSON::ObjectId.new.to_s)
       provenance = _or_else(data['provenance'], true)
 
-      "-i #{input} -o #{output} -s #{service} -d #{dataset} --write-data-csv #{big_data} --write-provenance #{provenance}"
+      "java -jar aggr-0.1.2-with-dependencies.jar -i #{input} -o #{output} -s #{service} -d #{dataset} --write-data-csv #{big_data} --write-provenance #{provenance}"
     end
 
     def build_kmeans_command(data)

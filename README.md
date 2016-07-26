@@ -5,6 +5,7 @@ docker run -p 80:80 --name aggr-web --volume /home/casper/IdeaProjects/aggr-web:
 
 ### Example request
 * POST /aggregations with following payload
+
 ```json
 {
     "data": {
@@ -31,7 +32,9 @@ docker run -p 80:80 --name aggr-web --volume /home/casper/IdeaProjects/aggr-web:
     }
 }
 ```
+
 will insert an AggregationRequest with the following SPARQL query:
+
 ```sparql
  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
  

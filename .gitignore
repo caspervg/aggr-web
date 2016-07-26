@@ -180,3 +180,4 @@ fabric.properties
 /data/db/clean-logs.sh
 /data/db/virtuoso.trx
 /data/db/http*.log
+/data/logs/*.log

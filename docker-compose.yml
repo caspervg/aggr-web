@@ -3,6 +3,8 @@ version: '2'
 services:
   aggr_web:
     image: caspervg/aggr_web
+    volumes:
+      - ./data/logs:/logs
     ports:
       - 80:80
   database:

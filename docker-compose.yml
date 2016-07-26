@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  aggr_web:
+    image: caspervg/aggr_web
+    ports:
+      - 80:80
+  database:
+    image: tenforce/virtuoso:1.0.0-virtuoso7.2.2
+    environment:
+      SPARQL_UPDATE: "true"
+      DEFAULT_GRAPH: http://mu.semte.ch/application
+      VIRTUAL_HOST: virtuoso.demo.big-data-europe.local
+      VIRTUAL_PORT: 8890
+    volumes:
+      - ./data/db:/data
+    ports:
+      - 8890:8890

@@ -6,7 +6,6 @@ require_relative 'aggregation_service/command_builders'
 require_relative 'aggregation_service/request_validations'
 
 configure do
-  set :salt, ENV['MU_APPLICATION_SALT']
 end
 
 ###
@@ -53,23 +52,15 @@ post '/aggregations/?' do
   validate_aggregation(attributes['parameters'], attributes['aggregation_type'])
 
   request_id = generate_uuid()
-  query = insert_new_aggregation_request(attributes, request_id)
+  insert_new_aggregation_request(attributes, request_id)
 
-  status 201
-  query
-
-=begin
   status 201
   {
-    links: {
-      self: query,
-    },
     data: {
       type: 'aggregation_request',
       id: request_id
     }
   }.to_json
-=end
 end
 
 

@@ -170,3 +170,13 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+/data/db/virtuoso-temp.db
+/data/db/dumps/
+/data/db/virtuoso.ini
+/data/db/virtuoso.lck
+/data/db/virtuoso.log
+/data/db/virtuoso.db
+/data/db/virtuoso.pxa
+/data/db/clean-logs.sh
+/data/db/virtuoso.trx
+/data/db/http*.log

@@ -40,7 +40,7 @@ module AggregationService
       query += "                      <#{OWN_P.input}> #{request['input'].sparql_escape} ;"
       query += "                      <#{OWN_P.output}> #{request['output'].sparql_escape} ;"
       query += "                      <#{OWN_P.provenance}> #{request['provenance'].sparql_escape} ;"
-      query += "                      <#{OWN_P.big_data}> #{request['big_data'].sparql_escape} ;"
+      query += "                      <#{OWN_P['big_data']}> #{request['big_data'].sparql_escape} ;"
       query += "                      <#{OWN_P.status}> \"not started\" ;"
       query += "                      <#{DCT.date}> #{Time.new.sparql_escape} ;"
       query += "                      <#{OWN_P.parameters}> <#{param_uri}> ;"
@@ -48,8 +48,7 @@ module AggregationService
       query += "   }"
       query += " }"
 
-      query
-      # update(query)
+      update(query)
     end
   end
 end

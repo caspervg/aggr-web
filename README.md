@@ -16,6 +16,7 @@ docker run -p 80:80 --name aggr-web --volume /home/casper/IdeaProjects/aggr-web:
             "aggregation_type": "kmeans",
             "provenance": true,
             "big_data": true,
+            "measurement_class": "net.caspervg.aggr.worker.core.bean.impl.TimedGeoMeasurement",
             "parameters": {
                 "iterations": 30,
                 "centroids": 5,

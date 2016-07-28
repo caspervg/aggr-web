@@ -38,7 +38,7 @@ module AggregationService
       query += "                      <#{OWN_P['aggregation_type']}> #{request['aggregation_type'].sparql_escape} ;"
       query += "                      <#{OWN_P.provenance}> #{request['provenance'].sparql_escape} ;"
       query += "                      <#{OWN_P['big_data']}> #{request['big_data'].sparql_escape} ;"
-      query += "                      <#{OWN_P['measurement_class']} #{request['measurement_class'].sparql_escape}"
+      query += "                      <#{OWN_P['measurement_class']}> #{request['measurement_class'].sparql_escape}"
       query += "                      <#{OWN_P.status}> \"not_started\" ;"
       query += "                      <#{DCT.date}> #{Time.new.sparql_escape} ."
       query += "   }"

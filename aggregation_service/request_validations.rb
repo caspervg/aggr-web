@@ -13,6 +13,8 @@ module AggregationService
         when 'kmeans' then _validate_kmeans(data)
         when 'time' then _validate_time(data)
         when 'grid' then _validate_grid(data)
+        else
+          true
       end
     end
 

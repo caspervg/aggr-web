@@ -10,6 +10,12 @@ class FalseClass
   end
 end
 
+class Array
+  def sparql_escape
+    self.join(',').sparql_escape
+  end
+end
+
 class Time
   def sparql_escape
     '"' + self.xmlschema + '"^^xsd:dateTime'

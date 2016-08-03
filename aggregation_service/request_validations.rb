@@ -5,6 +5,7 @@ module AggregationService
       error('Input (`input`) is required') if data['input'].nil?
       error('Output (`output`) is required') if data['output'].nil?
       error('Aggregation type (`aggregation_type`) is required') if data['aggregation_type'].nil?
+      error('Dataset (`dataset` is required') if data['dataset'].nil?
       error('Parameters (`parameters`) is required') if data['parameters'].nil?
     end
 
@@ -13,9 +14,22 @@ module AggregationService
         when 'kmeans' then _validate_kmeans(data)
         when 'time' then _validate_time(data)
         when 'grid' then _validate_grid(data)
+        when 'diff' then _validate_diff(data)
+        when 'average' then _validate_average(data)
         else
           true
       end
+    end
+
+    def _validate_average(data)
+      error('Other locations (`parameters.others`) is required') if data['others'].nil? or not data['others'].kind_of?(Array)
+      error('Expected # of measurements (`parameters.amount`) is required') if data['amount'].nil?
+      error('Must have at least two locations') if data['others'].length < 2
+    end
+
+    def _validate_diff(data)
+      error('Subtrahend location (`parameters.others`) is required') if data['others'].nil? or not data['others'].kind_of?(Array)
+      error('Must have one subtrahend') if data['others'].length != 1
     end
 
     def _validate_kmeans(data)

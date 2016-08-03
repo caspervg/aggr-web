@@ -2,7 +2,6 @@ require 'bcrypt'
 require 'open4'
 require_relative 'lib/additional_escape_helpers.rb'
 require_relative 'aggregation_service/sparql_queries'
-require_relative 'aggregation_service/command_builders'
 require_relative 'aggregation_service/request_validations'
 
 configure do
@@ -70,4 +69,3 @@ end
 
 helpers AggregationService::SparqlQueries
 helpers AggregationService::RequestValidations
-helpers AggregationService::CommandBuilders

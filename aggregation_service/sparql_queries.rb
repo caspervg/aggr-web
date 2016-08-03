@@ -24,7 +24,7 @@ module AggregationService
         end
       end
 
-      aggregation_params = ['iterations', 'centroids', 'metric', 'levels', 'grid_size']
+      aggregation_params = ['iterations', 'centroids', 'metric', 'levels', 'grid_size', 'others', 'amount', 'key']
       aggregation_params.each do |param|
         unless request['parameters'][param].nil?
           log.info("Adding parameter #{param} with value #{request['parameters'][param]}")
@@ -33,6 +33,7 @@ module AggregationService
       end
 
       query += "     <#{request_uri}> <#{MU_CORE.uuid}> <#{request_id}> ;"
+      query += "                      <#{OWN_P.dataset}> #{request['dataset'].sparql_escape} ;"
       query += "                      <#{OWN_P.input}> #{request['input'].sparql_escape} ;"
       query += "                      <#{OWN_P.output}> #{request['output'].sparql_escape} ;"
       query += "                      <#{OWN_P['aggregation_type']}> #{request['aggregation_type'].sparql_escape} ;"

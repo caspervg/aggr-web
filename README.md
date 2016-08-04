@@ -3,6 +3,8 @@
 ## Description
 This repository contains the Ruby components of the Aggr project. It provides functionality to translate incoming JSON API aggregation requests to a semantic entity and place it in a triple-store, where it will be read and interpreted by the `Aggr-Master` and finally executed by a `Aggr-Worker`.
 
+Implemented by Casper Van Gheluwe (UGent) during the summer of 2016, as part of an internship at TenForce.
+
 ## Components
 * **web.rb**
     * HTTP request handling

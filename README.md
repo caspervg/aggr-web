@@ -1,7 +1,7 @@
 # Aggr-Web
 
 ## Description
-This repository contains the Ruby components of the Aggr project. It provides functionality to translate incoming JSON API aggregation requests to a semantic entity and place it in a triple-store, where it will be read and interpreted by the `Aggr-Master` and finally executed by a `Aggr-Worker`.
+This repository contains the Ruby components of the Aggr project. It provides functionality to translate incoming JSON API aggregation requests to a semantic entity and place it in a triple-store, where it will be read and interpreted by the `Aggr-Master` and finally executed by a `Aggr-Worker`. Available on DockerHub: [caspervg/aggr](https://hub.docker.com/r/caspervg/aggr-web/)
 
 Implemented by Casper Van Gheluwe (UGent) during the summer of 2016, as part of an internship at TenForce.
 
@@ -94,4 +94,4 @@ The Aggr-Web application can be ran in development mode (with automatic reloadin
 docker run -p 80:80 --name aggr-web --volume /home/casper/IdeaProjects/aggr-web:/app -e RACK_ENV=development semtech/mu-ruby-template:2.0.0-ruby2.3
 ```
 ## Docker
-A **Docker configuration** (`Dockerfile`) is provided, based on [semtech/mu-ruby-template](https://github.com/mu-semtech/mu-ruby-template). When ran, it will automatically start a Ruby/Sinatra HTTP server that will accept aggregation requests.
+A **Docker configuration** (`Dockerfile`) is provided, based on [semtech/mu-ruby-template](https://github.com/mu-semtech/mu-ruby-template). When ran, it will automatically start a Ruby/Sinatra HTTP server that will accept aggregation requests. Images are also available on DockerHub: [caspervg/aggr-web](https://hub.docker.com/r/caspervg/aggr-web/).
